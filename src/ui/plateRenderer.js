@@ -52,34 +52,19 @@ export function renderPlateViewModelHtml(vm, options = {}) {
 
         <div class="hex-title-row">
           <div class="hex-title-box original-title-box">
-            <div class="hex-label">本卦</div>
-            <div class="hex-name">${escapeHtml(vm.originalHexagram.name)}</div>
-            <div class="hex-sub">${escapeHtml(vm.originalHexagram.palace)}宫 · ${escapeHtml(vm.originalHexagram.palacePosName)}</div>
+            <span class="hex-label">本卦</span>
+            <span class="hex-name">${escapeHtml(vm.originalHexagram.name)}</span>
+            <span class="hex-sub">${escapeHtml(vm.originalHexagram.palace)}宫 · ${escapeHtml(vm.originalHexagram.palacePosName)}</span>
           </div>
           <div class="hex-title-box changed-title-box">
-            <div class="hex-label">变卦</div>
-            <div class="hex-name">${escapeHtml(vm.changedHexagram.name)}</div>
-            <div class="hex-sub">${escapeHtml(vm.changedHexagram.palace)}宫 · ${escapeHtml(vm.changedHexagram.palacePosName)}</div>
+            <span class="hex-label">变卦</span>
+            <span class="hex-name">${escapeHtml(vm.changedHexagram.name)}</span>
+            <span class="hex-sub">${escapeHtml(vm.changedHexagram.palace)}宫 · ${escapeHtml(vm.changedHexagram.palacePosName)}</span>
           </div>
         </div>
 
-        <div class="plate-scroll">
-          <table class="plate-table classical-plate-table">
-            <thead>
-              <tr>
-                <th class="thin-col">六神</th>
-                <th class="fushen-col">伏神</th>
-                <th class="original-detail-col">本卦</th>
-                <th class="line-col">本卦爻</th>
-                <th class="move-col">动</th>
-                <th class="line-col changed-line-col">变卦爻</th>
-                <th class="changed-detail-col">变卦</th>
-                <th class="role-col">世应</th>
-                <th class="mark-col">标记</th>
-              </tr>
-            </thead>
-            <tbody>${rows.map(row => renderClassicalRow(row)).join('')}</tbody>
-          </table>
+        <div class="plate-line-list">
+          ${rows.map(row => renderClassicalRow(row)).join('')}
         </div>
       </section>
     </div>
@@ -96,23 +81,23 @@ function renderClassicalRow(row) {
     row.highlights.isDayZhi ? 'day-line' : ''
   ].filter(Boolean).join(' ')
 
-  const fushen = row.fushen ? `${row.fushen.liuqin} ${renderGanZhi(row.fushen.gan, row.fushen.zhi)} ${wx(row.fushen.wuxing)}` : ''
+  const fushen = row.fushen ? `${row.fushen.liuqin}${renderGanZhi(row.fushen.gan, row.fushen.zhi)}${wx(row.fushen.wuxing)}` : ''
   const move = row.changing ? (row.number === 6 ? '×' : '○') : ''
   const role = row.role ? `<span class="role-badge">${escapeHtml(row.role)}</span>` : ''
   const shensha = row.highlights.shensha.length ? row.highlights.shensha.map(x => `<span class="shensha-badge">${escapeHtml(x)}</span>`).join('') : ''
 
   return `
-    <tr class="${classes}">
-      <td class="liushen-cell">${escapeHtml(row.liushen)}</td>
-      <td class="fushen-cell">${fushen}</td>
-      <td class="yao-detail-cell original-detail-cell">${escapeHtml(row.original.liuqin)} ${renderGanZhi(row.original.gan, row.original.zhi)} ${wx(row.original.wuxing)}</td>
-      <td class="yao-line-cell original-line-cell"><span class="line-symbol">${lineSymbol(row.yinYang)}</span></td>
-      <td class="move-cell"><span class="move-symbol">${move}</span></td>
-      <td class="yao-line-cell changed-line-cell"><span class="line-symbol">${lineSymbol(row.changed.yinYang)}</span></td>
-      <td class="yao-detail-cell changed-detail-cell">${escapeHtml(row.changed.liuqin)} ${renderGanZhi(row.changed.gan, row.changed.zhi)} ${wx(row.changed.wuxing)}</td>
-      <td class="role-cell">${role}</td>
-      <td class="highlight-cell">${renderHighlightBadges(row)}${shensha}</td>
-    </tr>
+    <div class="plate-line-row ${classes}">
+      <div class="liushen-cell">${escapeHtml(row.liushen)}</div>
+      <div class="fushen-cell">${fushen}</div>
+      <div class="yao-detail-cell original-detail-cell">${escapeHtml(row.original.liuqin)}${renderGanZhi(row.original.gan, row.original.zhi)}${wx(row.original.wuxing)}</div>
+      <div class="yao-line-cell original-line-cell"><span class="line-symbol">${lineSymbol(row.yinYang)}</span></div>
+      <div class="move-cell"><span class="move-symbol">${move}</span></div>
+      <div class="yao-line-cell changed-line-cell"><span class="line-symbol">${lineSymbol(row.changed.yinYang)}</span></div>
+      <div class="yao-detail-cell changed-detail-cell">${escapeHtml(row.changed.liuqin)}${renderGanZhi(row.changed.gan, row.changed.zhi)}${wx(row.changed.wuxing)}</div>
+      <div class="role-cell">${role}</div>
+      <div class="highlight-cell">${renderHighlightBadges(row)}${shensha}</div>
+    </div>
   `
 }
 
@@ -129,7 +114,7 @@ function renderHighlightBadges(row) {
 }
 
 function lineSymbol(yinYang) {
-  return yinYang === '阳' ? '━━━' : '━　━'
+  return yinYang === '阳' ? '━━' : '━ ━'
 }
 
 function renderGanZhi(gan, zhi) {
