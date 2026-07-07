@@ -1,8 +1,10 @@
-const CACHE_NAME = 'liuyao-pwa-v2';
+const CACHE_NAME = 'liuyao-pwa-v3';
 const ASSETS = [
   './',
   './index.html',
   './styles.css',
+  './layout-fix.css',
+  './plate-ui.css',
   './manifest.webmanifest',
   './icons/icon-192.png',
   './icons/icon-512.png'
