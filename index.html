@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>六爻读盘手册 PWA</title>
+  <meta name="theme-color" content="#18324a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="六爻读盘" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="title-wrap">
+      <div class="app-title">六爻读盘</div>
+      <div class="app-subtitle" id="currentRecordLabel">未选择记录</div>
+    </div>
+    <a href="#settings" class="header-link" aria-label="设置和同步">同步</a>
+  </header>
+
+  <main id="app" class="app-main" tabindex="-1"></main>
+
+  <nav class="bottom-nav" aria-label="主导航">
+    <a href="#home" data-tab="home">流程</a>
+    <a href="#records" data-tab="records">笔记</a>
+    <a href="#knowledge" data-tab="knowledge">知识</a>
+    <a href="#summary" data-tab="summary">汇总</a>
+  </nav>
+
+  <template id="emptyTemplate">
+    <section class="card empty-card">
+      <h2>先新建一条读盘笔记</h2>
+      <p>每一次占事都保存成一条独立笔记。系统会自动编号，也可以自己命名。</p>
+      <a class="primary-btn" href="#records">去新建笔记</a>
+    </section>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

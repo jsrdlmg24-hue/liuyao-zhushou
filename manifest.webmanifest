@@ -1,0 +1,15 @@
+{
+  "name": "六爻读盘手机工具",
+  "short_name": "六爻读盘",
+  "description": "六爻新手读盘流程、知识库、笔记与云端同步工具。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#18324a",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
