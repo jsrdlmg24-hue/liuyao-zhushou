@@ -46,6 +46,12 @@ body {
   display: none !important;
 }
 
+body:has(.hero) .plate-dock,
+body:has(#plateQuestion) .plate-dock,
+body:has(#createRecordBtn) .plate-dock {
+  display: none !important;
+}
+
 @media (min-width: 921px) {
   .app-main {
     padding-left: 0;
