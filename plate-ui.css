@@ -1,0 +1,263 @@
+/* Classical mobile liuyao plate UI. Reusable with src/ui/plateRenderer.js. */
+.liuyao-plate {
+  background: #f7f8fb;
+}
+
+.plate-question-block,
+.plate-strip,
+.plate-main-card {
+  background: #ffffff;
+  border: 1px solid #e4e8ef;
+  border-radius: 16px;
+  margin: 8px 10px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 14px rgba(15, 35, 55, 0.05);
+}
+
+.plate-question-block {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.plate-strip {
+  font-size: 14px;
+  line-height: 1.75;
+  white-space: normal;
+}
+
+.plate-pillars {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 2px 0 4px;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.plate-pillars .day-pillar {
+  border-bottom: 3px solid #d94848;
+}
+
+.plate-kongwang {
+  text-align: center;
+  color: #68768a;
+  font-size: 13px;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.hex-title-row {
+  display: grid;
+  grid-template-columns: 1fr 32px 1fr;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 4px 0 10px;
+}
+
+.hex-name {
+  font-size: 18px;
+  font-weight: 900;
+  color: #1f2f40;
+}
+
+.hex-sub {
+  margin-top: 2px;
+  color: #758196;
+  font-size: 13px;
+}
+
+.hex-arrow {
+  font-size: 24px;
+  font-weight: 900;
+  color: #a0a9b8;
+}
+
+.classical-plate-table {
+  min-width: 760px;
+  background: #fff;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.classical-plate-table th {
+  background: #f4f6fa;
+  color: #5a6678;
+  font-size: 12px;
+  text-align: center;
+}
+
+.classical-plate-table td {
+  border-bottom: 1px solid #edf0f5;
+  padding: 7px 6px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.liushen-cell {
+  width: 48px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.fushen-cell {
+  color: #768296;
+}
+
+.yao-detail-cell {
+  font-weight: 800;
+}
+
+.changed-cell {
+  color: #4e5a6d;
+}
+
+.yao-symbol-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 132px;
+}
+
+.line-symbol {
+  display: inline-block;
+  min-width: 52px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 18px;
+  font-weight: 900;
+  color: #111827;
+}
+
+.small-line {
+  min-width: 46px;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.move-symbol {
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 900;
+  color: #8b1e1e;
+}
+
+.coin-throw {
+  font-size: 11px;
+  color: #8c97a8;
+  background: #f3f5f8;
+  padding: 2px 5px;
+  border-radius: 999px;
+}
+
+.ganzhi,
+.wx-label {
+  font-weight: 900;
+}
+
+.wx-mu { color: #168a45; }
+.wx-huo { color: #d62f2f; }
+.wx-tu { color: #a66b12; }
+.wx-jin { color: #b08a00; }
+.wx-shui { color: #1463b8; }
+
+.deity-chip {
+  display: inline-block;
+  margin: 2px 5px 2px 0;
+  font-weight: 800;
+}
+
+.muted-text {
+  color: #7b8798;
+}
+
+.highlight-cell {
+  min-width: 150px;
+}
+
+.hl-badge,
+.shensha-badge,
+.role-badge {
+  display: inline-block;
+  margin: 2px 3px 2px 0;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.hl-badge {
+  background: #e8f0fe;
+  color: #174ea6;
+}
+
+.shensha-badge {
+  background: #f4e8ff;
+  color: #6d28d9;
+}
+
+.role-badge {
+  background: #ffe4e6;
+  color: #b42318;
+}
+
+.moving-line {
+  background: #fff7e6 !important;
+}
+
+.month-line td {
+  box-shadow: inset 0 0 0 9999px rgba(29, 155, 240, 0.04);
+}
+
+.day-line td {
+  box-shadow: inset 0 0 0 9999px rgba(34, 197, 94, 0.05);
+}
+
+.kong-line {
+  opacity: .78;
+}
+
+.shi-line td:first-child,
+.ying-line td:first-child {
+  position: relative;
+}
+
+.shi-line td:first-child::before,
+.ying-line td:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 4px;
+  border-radius: 999px;
+}
+
+.shi-line td:first-child::before { background: #d94848; }
+.ying-line td:first-child::before { background: #246bfe; }
+
+@media (max-width: 560px) {
+  .plate-question-block,
+  .plate-strip,
+  .plate-main-card {
+    margin-left: 6px;
+    margin-right: 6px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .plate-pillars {
+    gap: 8px;
+    font-size: 18px;
+  }
+
+  .hex-name {
+    font-size: 16px;
+  }
+}
