@@ -137,6 +137,7 @@
   font-size: clamp(10.5px, 1.05vw, 14px);
   line-height: 1.35;
   background: transparent;
+  outline: none !important;
 }
 
 .plate-line-row > div {
@@ -264,13 +265,20 @@
 .day-line {
   background: transparent !important;
   background-image: none !important;
+  outline: none !important;
 }
 
 .kong-line {
   opacity: .80;
+  outline: none !important;
 }
 
 /* Override old generic row highlights from styles.css. */
+.shi-line,
+.ying-line {
+  outline: none !important;
+}
+
 .shi-line td,
 .ying-line td {
   box-shadow: none !important;
