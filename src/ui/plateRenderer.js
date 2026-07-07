@@ -47,7 +47,10 @@ export function renderPlateViewModelHtml(vm, options = {}) {
           <span>${renderGanZhiText(vm.header.pillars.shi)}时</span>
         </div>
         <div class="plate-kongwang">
-          年空:${escapeHtml(vm.header.kongwangText.nian)} / 月空:${escapeHtml(vm.header.kongwangText.yue)} / <b>日空:${escapeHtml(vm.header.kongwangText.ri)}</b> / 时空:${escapeHtml(vm.header.kongwangText.shi)}
+          <span>年空:${renderKongwangText(vm.header.kongwangText.nian)}</span>
+          <span>月空:${renderKongwangText(vm.header.kongwangText.yue)}</span>
+          <span class="day-kong-highlight">日空:${renderKongwangText(vm.header.kongwangText.ri)}</span>
+          <span>时空:${renderKongwangText(vm.header.kongwangText.shi)}</span>
         </div>
 
         <div class="hex-title-row">
@@ -125,6 +128,13 @@ function renderGanZhiText(text = '') {
   const chars = String(text).split('')
   return chars.map(ch => {
     if (GAN_WUXING[ch]) return spanWuxing(ch, GAN_WUXING[ch])
+    if (ZHI_WUXING[ch]) return spanWuxing(ch, ZHI_WUXING[ch])
+    return escapeHtml(ch)
+  }).join('')
+}
+
+function renderKongwangText(text = '') {
+  return String(text).split('').map(ch => {
     if (ZHI_WUXING[ch]) return spanWuxing(ch, ZHI_WUXING[ch])
     return escapeHtml(ch)
   }).join('')
