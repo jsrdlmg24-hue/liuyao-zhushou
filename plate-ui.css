@@ -29,11 +29,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
-  padding: 2px 0 4px;
-  font-size: 20px;
+  gap: 14px;
+  padding: 4px 0 5px;
+  font-size: 22px;
   font-weight: 900;
-  letter-spacing: .5px;
+  letter-spacing: .6px;
 }
 
 .plate-pillars .day-pillar {
@@ -45,20 +45,45 @@
   color: #68768a;
   font-size: 13px;
   line-height: 1.55;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .hex-title-row {
   display: grid;
-  grid-template-columns: 1fr 32px 1fr;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 8px 0 12px;
+}
+
+.hex-title-box {
+  border: 1px solid #e3e9f2;
+  border-radius: 14px;
+  padding: 10px 12px;
   text-align: center;
-  gap: 8px;
-  padding: 4px 0 10px;
+  background: #fafcff;
+}
+
+.original-title-box {
+  border-left: 5px solid #1f5f8b;
+}
+
+.changed-title-box {
+  border-left: 5px solid #8a6b18;
+}
+
+.hex-label {
+  display: inline-block;
+  margin-bottom: 3px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  color: #526174;
+  background: #eef3f8;
 }
 
 .hex-name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 900;
   color: #1f2f40;
 }
@@ -69,14 +94,8 @@
   font-size: 13px;
 }
 
-.hex-arrow {
-  font-size: 24px;
-  font-weight: 900;
-  color: #a0a9b8;
-}
-
 .classical-plate-table {
-  min-width: 760px;
+  min-width: 900px;
   background: #fff;
   border-collapse: separate;
   border-spacing: 0;
@@ -87,14 +106,24 @@
   color: #5a6678;
   font-size: 12px;
   text-align: center;
+  border-bottom: 1px solid #e3e8ef;
 }
 
 .classical-plate-table td {
   border-bottom: 1px solid #edf0f5;
-  padding: 7px 6px;
+  padding: 7px 7px;
   font-size: 15px;
   white-space: nowrap;
 }
+
+.thin-col { width: 48px; }
+.fushen-col { width: 112px; }
+.original-detail-col,
+.changed-detail-col { width: 150px; }
+.line-col { width: 84px; }
+.move-col { width: 44px; }
+.role-col { width: 54px; }
+.mark-col { min-width: 190px; }
 
 .liushen-cell {
   width: 48px;
@@ -110,50 +139,49 @@
   font-weight: 800;
 }
 
-.changed-cell {
-  color: #4e5a6d;
+.original-detail-cell {
+  border-right: 1px solid #e5ebf3;
 }
 
-.yao-symbol-cell {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-  min-width: 132px;
+.changed-detail-cell {
+  color: #4e5a6d;
+  border-left: 1px solid #e5ebf3;
+}
+
+.yao-line-cell {
+  text-align: center;
+  min-width: 78px;
+}
+
+.move-cell {
+  text-align: center;
+  min-width: 40px;
+  background: #fffdf8;
 }
 
 .line-symbol {
   display: inline-block;
-  min-width: 52px;
+  min-width: 42px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 900;
   color: #111827;
-}
-
-.small-line {
-  min-width: 46px;
-  font-size: 14px;
-  margin-left: 4px;
+  letter-spacing: -1px;
 }
 
 .move-symbol {
   display: inline-grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
-  font-size: 18px;
+  width: 24px;
+  height: 24px;
+  font-size: 19px;
   line-height: 1;
   font-weight: 900;
-  color: #8b1e1e;
+  color: #a13b2b;
 }
 
-.coin-throw {
-  font-size: 11px;
-  color: #8c97a8;
-  background: #f3f5f8;
-  padding: 2px 5px;
-  border-radius: 999px;
+.role-cell {
+  text-align: center;
 }
 
 .ganzhi,
@@ -169,7 +197,7 @@
 
 .deity-chip {
   display: inline-block;
-  margin: 2px 5px 2px 0;
+  margin: 2px 8px 2px 0;
   font-weight: 800;
 }
 
@@ -178,69 +206,69 @@
 }
 
 .highlight-cell {
-  min-width: 150px;
+  min-width: 190px;
+  padding-left: 18px !important;
+  color: #738094;
 }
 
 .hl-badge,
 .shensha-badge,
 .role-badge {
   display: inline-block;
-  margin: 2px 3px 2px 0;
-  padding: 2px 6px;
+  margin: 2px 4px 2px 0;
+  padding: 1px 6px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
 }
 
 .hl-badge {
-  background: #e8f0fe;
-  color: #174ea6;
+  background: #eef3f8;
+  color: #526174;
 }
 
 .shensha-badge {
-  background: #f4e8ff;
-  color: #6d28d9;
+  background: #f5f0ff;
+  color: #7152b8;
 }
 
 .role-badge {
-  background: #ffe4e6;
+  background: #fff1f2;
   color: #b42318;
 }
 
 .moving-line {
-  background: #fff7e6 !important;
+  background: #fff9ed !important;
 }
 
 .month-line td {
-  box-shadow: inset 0 0 0 9999px rgba(29, 155, 240, 0.04);
+  background-image: linear-gradient(rgba(29, 155, 240, 0.035), rgba(29, 155, 240, 0.035));
 }
 
 .day-line td {
-  box-shadow: inset 0 0 0 9999px rgba(34, 197, 94, 0.05);
+  background-image: linear-gradient(rgba(34, 197, 94, 0.04), rgba(34, 197, 94, 0.04));
 }
 
 .kong-line {
   opacity: .78;
 }
 
+/* Override old generic row highlights from styles.css. */
+.shi-line td,
+.ying-line td {
+  box-shadow: none !important;
+}
+
 .shi-line td:first-child,
 .ying-line td:first-child {
-  position: relative;
+  position: static;
 }
 
 .shi-line td:first-child::before,
 .ying-line td:first-child::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  bottom: 4px;
-  width: 4px;
-  border-radius: 999px;
+  content: none !important;
+  display: none !important;
 }
-
-.shi-line td:first-child::before { background: #d94848; }
-.ying-line td:first-child::before { background: #246bfe; }
 
 @media (max-width: 560px) {
   .plate-question-block,
@@ -257,7 +285,15 @@
     font-size: 18px;
   }
 
+  .hex-title-row {
+    gap: 8px;
+  }
+
   .hex-name {
-    font-size: 16px;
+    font-size: 17px;
+  }
+
+  .classical-plate-table {
+    min-width: 840px;
   }
 }
