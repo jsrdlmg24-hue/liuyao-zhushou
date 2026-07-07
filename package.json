@@ -4,11 +4,8 @@
   "version": "0.2.0",
   "type": "module",
   "scripts": {
-    "predev": "node scripts/sync-liuyao-web-core.mjs",
     "dev": "vite --host 0.0.0.0",
-    "prebuild": "node scripts/sync-liuyao-web-core.mjs",
     "build": "vite build",
-    "pretypecheck": "node scripts/sync-liuyao-web-core.mjs",
     "typecheck": "tsc --noEmit",
     "test": "npm run typecheck",
     "sync:core": "node scripts/sync-liuyao-web-core.mjs"
