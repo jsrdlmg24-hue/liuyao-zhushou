@@ -20,8 +20,8 @@
 }
 
 .plate-strip {
-  font-size: 14px;
-  line-height: 1.75;
+  font-size: 13px;
+  line-height: 1.65;
   white-space: normal;
 }
 
@@ -29,159 +29,161 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px;
-  padding: 4px 0 5px;
-  font-size: 22px;
+  gap: 10px;
+  padding: 2px 0 4px;
+  font-size: 17px;
   font-weight: 900;
-  letter-spacing: .6px;
+  letter-spacing: .3px;
 }
 
 .plate-pillars .day-pillar {
-  border-bottom: 3px solid #d94848;
+  border-bottom: 2px solid #d94848;
 }
 
 .plate-kongwang {
   text-align: center;
   color: #68768a;
-  font-size: 13px;
-  line-height: 1.55;
-  margin-bottom: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 8px;
 }
 
 .hex-title-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  padding: 8px 0 12px;
+  gap: 8px;
+  padding: 4px 0 8px;
+  color: #69768a;
 }
 
 .hex-title-box {
-  border: 1px solid #e3e9f2;
-  border-radius: 14px;
-  padding: 10px 12px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+  padding: 2px 4px 5px;
+  border-bottom: 1px solid #e8edf4;
   text-align: center;
-  background: #fafcff;
 }
 
 .original-title-box {
-  border-left: 5px solid #1f5f8b;
+  border-bottom-color: rgba(31, 95, 139, .25);
 }
 
 .changed-title-box {
-  border-left: 5px solid #8a6b18;
+  border-bottom-color: rgba(138, 107, 24, .25);
 }
 
 .hex-label {
-  display: inline-block;
-  margin-bottom: 3px;
-  padding: 2px 9px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 900;
-  color: #526174;
-  background: #eef3f8;
+  font-size: 10px;
+  font-weight: 800;
+  color: #8a96a8;
 }
 
 .hex-name {
-  font-size: 20px;
+  font-size: 13px;
   font-weight: 900;
-  color: #1f2f40;
+  color: #263445;
 }
 
 .hex-sub {
-  margin-top: 2px;
-  color: #758196;
-  font-size: 13px;
+  font-size: 10px;
+  color: #8a96a8;
 }
 
-.classical-plate-table {
-  min-width: 900px;
-  background: #fff;
-  border-collapse: separate;
-  border-spacing: 0;
+.plate-line-list {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  border-top: 1px solid #eef2f6;
 }
 
-.classical-plate-table th {
-  background: #f4f6fa;
-  color: #5a6678;
-  font-size: 12px;
-  text-align: center;
-  border-bottom: 1px solid #e3e8ef;
+.plate-line-row {
+  display: grid;
+  grid-template-columns:
+    minmax(34px, .42fr)
+    minmax(40px, .82fr)
+    minmax(68px, 1.08fr)
+    minmax(34px, .50fr)
+    minmax(20px, .28fr)
+    minmax(34px, .50fr)
+    minmax(68px, 1.08fr)
+    minmax(24px, .32fr)
+    minmax(56px, .90fr);
+  gap: 3px;
+  align-items: center;
+  min-width: 0;
+  border-bottom: 1px solid #eef2f6;
+  padding: 7px 0;
+  font-size: clamp(10.5px, 1.05vw, 14px);
+  line-height: 1.35;
 }
 
-.classical-plate-table td {
-  border-bottom: 1px solid #edf0f5;
-  padding: 7px 7px;
-  font-size: 15px;
-  white-space: nowrap;
+.plate-line-row > div {
+  min-width: 0;
 }
-
-.thin-col { width: 48px; }
-.fushen-col { width: 112px; }
-.original-detail-col,
-.changed-detail-col { width: 150px; }
-.line-col { width: 84px; }
-.move-col { width: 44px; }
-.role-col { width: 54px; }
-.mark-col { min-width: 190px; }
 
 .liushen-cell {
-  width: 48px;
   font-weight: 900;
-  text-align: center;
+  text-align: left;
+  color: #263445;
 }
 
 .fushen-cell {
-  color: #768296;
+  color: #8a96a8;
+  font-size: .88em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .yao-detail-cell {
   font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .original-detail-cell {
-  border-right: 1px solid #e5ebf3;
+  color: #1f2f40;
 }
 
 .changed-detail-cell {
   color: #4e5a6d;
-  border-left: 1px solid #e5ebf3;
 }
 
-.yao-line-cell {
+.yao-line-cell,
+.move-cell,
+.role-cell {
   text-align: center;
-  min-width: 78px;
-}
-
-.move-cell {
-  text-align: center;
-  min-width: 40px;
-  background: #fffdf8;
 }
 
 .line-symbol {
   display: inline-block;
-  min-width: 42px;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: 17px;
+  font-size: 1.15em;
   font-weight: 900;
   color: #111827;
-  letter-spacing: -1px;
+  letter-spacing: -1.4px;
+  white-space: nowrap;
+}
+
+.move-cell {
+  min-height: 20px;
 }
 
 .move-symbol {
   display: inline-grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
-  font-size: 19px;
+  width: 18px;
+  height: 20px;
+  font-size: 17px;
   line-height: 1;
   font-weight: 900;
   color: #a13b2b;
-}
-
-.role-cell {
-  text-align: center;
 }
 
 .ganzhi,
@@ -197,7 +199,7 @@
 
 .deity-chip {
   display: inline-block;
-  margin: 2px 8px 2px 0;
+  margin: 2px 7px 2px 0;
   font-weight: 800;
 }
 
@@ -206,51 +208,53 @@
 }
 
 .highlight-cell {
-  min-width: 190px;
-  padding-left: 18px !important;
+  padding-left: 10px;
   color: #738094;
+  font-size: clamp(8px, .86vw, 11px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
 }
 
 .hl-badge,
 .shensha-badge,
 .role-badge {
   display: inline-block;
-  margin: 2px 4px 2px 0;
-  padding: 1px 6px;
+  margin: 1px 2px 1px 0;
+  padding: 0 4px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: .92em;
   font-weight: 800;
 }
 
 .hl-badge {
-  background: #eef3f8;
-  color: #526174;
+  background: #f2f5f8;
+  color: #657286;
 }
 
 .shensha-badge {
-  background: #f5f0ff;
-  color: #7152b8;
+  background: #f7f2ff;
+  color: #7c63b5;
 }
 
 .role-badge {
-  background: #fff1f2;
+  background: #fff3f4;
   color: #b42318;
 }
 
 .moving-line {
-  background: #fff9ed !important;
+  background: #fffaf1 !important;
 }
 
-.month-line td {
+.month-line {
   background-image: linear-gradient(rgba(29, 155, 240, 0.035), rgba(29, 155, 240, 0.035));
 }
 
-.day-line td {
+.day-line {
   background-image: linear-gradient(rgba(34, 197, 94, 0.04), rgba(34, 197, 94, 0.04));
 }
 
 .kong-line {
-  opacity: .78;
+  opacity: .80;
 }
 
 /* Override old generic row highlights from styles.css. */
@@ -281,19 +285,53 @@
   }
 
   .plate-pillars {
-    gap: 8px;
-    font-size: 18px;
+    gap: 7px;
+    font-size: 15px;
+  }
+
+  .plate-kongwang {
+    font-size: 11px;
   }
 
   .hex-title-row {
-    gap: 8px;
+    gap: 6px;
+  }
+
+  .hex-title-box {
+    gap: 3px;
+  }
+
+  .hex-label,
+  .hex-sub {
+    font-size: 9px;
   }
 
   .hex-name {
-    font-size: 17px;
+    font-size: 11px;
   }
 
-  .classical-plate-table {
-    min-width: 840px;
+  .plate-line-row {
+    grid-template-columns:
+      minmax(28px, .42fr)
+      minmax(28px, .62fr)
+      minmax(54px, 1fr)
+      minmax(28px, .46fr)
+      minmax(16px, .24fr)
+      minmax(28px, .46fr)
+      minmax(54px, 1fr)
+      minmax(20px, .28fr)
+      minmax(38px, .70fr);
+    gap: 2px;
+    padding: 6px 0;
+    font-size: 10.5px;
+  }
+
+  .line-symbol {
+    letter-spacing: -1.8px;
+  }
+
+  .highlight-cell {
+    padding-left: 4px;
+    font-size: 8.5px;
   }
 }
