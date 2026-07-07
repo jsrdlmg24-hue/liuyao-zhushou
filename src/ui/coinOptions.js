@@ -54,6 +54,49 @@ function routeHash() {
   return location.hash || '#home'
 }
 
+function styleHeroActions() {
+  const row = document.querySelector('.hero .button-row')
+  if (!row) return
+  const plateLink = row.querySelector('a[href="#plate"]')
+  const recordsLink = row.querySelector('a[href="#records"]')
+  const summaryLink = row.querySelector('a[href="#summary"]')
+  if (!plateLink || !recordsLink || !summaryLink) return
+
+  row.classList.add('hero-action-layout')
+  row.style.display = 'grid'
+  row.style.gridTemplateColumns = window.innerWidth <= 700 ? '1fr' : 'minmax(0, 1fr) auto'
+  row.style.gridTemplateRows = window.innerWidth <= 700 ? 'auto auto auto' : 'auto auto'
+  row.style.alignItems = 'center'
+  row.style.columnGap = '18px'
+  row.style.rowGap = '10px'
+  row.style.marginTop = '18px'
+
+  plateLink.classList.add('home-plate-cta')
+  plateLink.style.gridColumn = '1'
+  plateLink.style.gridRow = window.innerWidth <= 700 ? '1' : '1 / span 2'
+  plateLink.style.justifySelf = 'center'
+  plateLink.style.minWidth = window.innerWidth <= 700 ? 'min(100%, 310px)' : '270px'
+  plateLink.style.minHeight = window.innerWidth <= 700 ? '82px' : '78px'
+  plateLink.style.padding = window.innerWidth <= 700 ? '24px 38px' : '22px 42px'
+  plateLink.style.borderRadius = '24px'
+  plateLink.style.fontSize = window.innerWidth <= 700 ? '29px' : '28px'
+  plateLink.style.fontWeight = '900'
+  plateLink.style.background = '#102f4c'
+  plateLink.style.color = '#fff'
+  plateLink.style.boxShadow = '0 14px 30px rgba(0, 0, 0, .24)'
+
+  ;[recordsLink, summaryLink].forEach((link, index) => {
+    link.style.gridColumn = window.innerWidth <= 700 ? '1' : '2'
+    link.style.gridRow = window.innerWidth <= 700 ? String(index + 2) : String(index + 1)
+    link.style.justifySelf = window.innerWidth <= 700 ? 'center' : 'end'
+    link.style.minHeight = window.innerWidth <= 700 ? '40px' : '42px'
+    link.style.padding = window.innerWidth <= 700 ? '8px 14px' : '9px 16px'
+    link.style.borderRadius = '16px'
+    link.style.fontSize = window.innerWidth <= 700 ? '14px' : '15px'
+    link.style.fontWeight = '800'
+  })
+}
+
 function cleanupHomeAndPlate() {
   const app = document.querySelector('#app')
   if (!app) return
@@ -67,6 +110,7 @@ function cleanupHomeAndPlate() {
   if (plateLink) {
     plateLink.classList.add('home-plate-cta')
   }
+  styleHeroActions()
 
   app.querySelectorAll('.card').forEach(card => {
     const kicker = card.querySelector('.kicker')
@@ -126,5 +170,6 @@ function startPageCleanup() {
 
 if (typeof window !== 'undefined') {
   window.addEventListener('hashchange', () => setTimeout(cleanupHomeAndPlate, 0))
+  window.addEventListener('resize', () => setTimeout(styleHeroActions, 0))
   document.addEventListener('DOMContentLoaded', () => setTimeout(startPageCleanup, 0))
 }
