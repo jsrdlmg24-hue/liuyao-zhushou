@@ -40,6 +40,14 @@ export function isValidYaoNumber(value) {
   return [6, 7, 8, 9].includes(Number(value))
 }
 
+function pad2(n) {
+  return String(n).padStart(2, '0')
+}
+
+function currentLocalDateTimeValue(date = new Date()) {
+  return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}T${pad2(date.getHours())}:${pad2(date.getMinutes())}`
+}
+
 function autoYaoNumber() {
   let total = 0
   for (let i = 0; i < 3; i += 1) {
@@ -110,6 +118,20 @@ function bindPlateBuildAction() {
   })
 }
 
+function bindCurrentTimeDefault() {
+  if (routeHash() !== '#plate') return
+  const input = document.querySelector('#plateCastTime')
+  if (!input || input.dataset.currentTimeBound === '1') return
+  input.dataset.currentTimeBound = '1'
+  input.addEventListener('change', () => { window.__liuyaoUserChangedCastTime = true })
+  input.addEventListener('input', () => { window.__liuyaoUserChangedCastTime = true })
+
+  if (!window.__liuyaoUserChangedCastTime) {
+    input.value = currentLocalDateTimeValue()
+    input.dispatchEvent(new Event('change', { bubbles: true }))
+  }
+}
+
 function cleanupHomeAndPlate() {
   const app = document.querySelector('#app')
   if (!app) return
@@ -144,6 +166,7 @@ function cleanupHomeAndPlate() {
 
   injectAutoCasting()
   bindPlateBuildAction()
+  bindCurrentTimeDefault()
 }
 
 function injectAutoCasting() {
