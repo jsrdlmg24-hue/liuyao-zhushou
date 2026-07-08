@@ -97,6 +97,19 @@ function styleHeroActions() {
   })
 }
 
+function bindPlateBuildAction() {
+  if (routeHash() !== '#plate') return
+  const buildBtn = document.querySelector('#buildPlateBtn')
+  if (!buildBtn || buildBtn.dataset.boundBuildRedirect === '1') return
+  buildBtn.dataset.boundBuildRedirect = '1'
+  buildBtn.textContent = '排盘并开始读盘'
+  buildBtn.addEventListener('click', () => {
+    setTimeout(() => {
+      location.hash = '#step-1'
+    }, 0)
+  })
+}
+
 function cleanupHomeAndPlate() {
   const app = document.querySelector('#app')
   if (!app) return
@@ -130,6 +143,7 @@ function cleanupHomeAndPlate() {
   }
 
   injectAutoCasting()
+  bindPlateBuildAction()
 }
 
 function injectAutoCasting() {
