@@ -86,7 +86,8 @@ function renderClassicalRow(row) {
 
   const fushen = row.fushen ? `${row.fushen.liuqin}${renderGanZhi(row.fushen.gan, row.fushen.zhi)}${wx(row.fushen.wuxing)}` : ''
   const move = row.changing ? (row.number === 6 ? '×' : '○') : ''
-  const role = row.role ? `<span class="role-badge">${escapeHtml(row.role)}</span>` : ''
+  const originalRole = row.role ? `<span class="role-badge original-role">本${escapeHtml(row.role)}</span>` : ''
+  const changedRole = row.changed.role ? `<span class="role-badge changed-role">变${escapeHtml(row.changed.role)}</span>` : ''
   const shensha = row.highlights.shensha.length ? row.highlights.shensha.map(x => `<span class="shensha-badge">${escapeHtml(x)}</span>`).join('') : ''
 
   return `
@@ -98,7 +99,7 @@ function renderClassicalRow(row) {
       <div class="move-cell"><span class="move-symbol">${move}</span></div>
       <div class="yao-line-cell changed-line-cell"><span class="line-symbol">${lineSymbol(row.changed.yinYang)}</span></div>
       <div class="yao-detail-cell changed-detail-cell">${escapeHtml(row.changed.liuqin)}${renderGanZhi(row.changed.gan, row.changed.zhi)}${wx(row.changed.wuxing)}</div>
-      <div class="role-cell">${role}</div>
+      <div class="role-cell">${originalRole}${changedRole}</div>
       <div class="highlight-cell">${renderHighlightBadges(row)}${shensha}</div>
     </div>
   `
