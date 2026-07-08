@@ -19,6 +19,7 @@ import { buildPaipan } from './paipanCore'
 import { formatBaZi, formatZhu } from './bazi'
 import { formatKongWang, isKong } from './kongwang'
 import { getLiuQin } from './liuqin'
+import { getShiYing } from './shiying'
 import { buildTimeContext } from './timeContext'
 import { getShenShaForYao } from './shensha'
 
@@ -75,6 +76,7 @@ export interface ChangedYaoViewModel {
   ganzhi: string
   wuxing: WuXing
   liuqin: LiuQin
+  role: '' | '世' | '应'
 }
 
 export interface PlateYaoRowViewModel {
@@ -168,9 +170,10 @@ function buildHexagramSummary(code: string): HexagramSummaryViewModel {
   }
 }
 
-function buildChangedRows(code: string): ChangedYaoViewModel[] {
+function buildChangedRows(code: string, originalPalace: BaGua): ChangedYaoViewModel[] {
   const hex = requireHexagramByCode(code)
-  const gongWuxing = GUA_WU_XING[hex.palace]
+  const originalGongWuxing = GUA_WU_XING[originalPalace]
+  const changedShiYing = getShiYing(hex.palacePos)
   const ganInner = GUA_NA_GAN[hex.lower].inner
   const ganOuter = GUA_NA_GAN[hex.upper].outer
   const zhiInner = GUA_NA_ZHI[hex.lower].inner
@@ -181,14 +184,17 @@ function buildChangedRows(code: string): ChangedYaoViewModel[] {
   return allZhis.map((zhi, idx) => {
     const gan = allGans[idx]!
     const wuxing = ZHI_WU_XING_NAJA[zhi]
+    const position = idx + 1
     return {
-      position: idx + 1,
+      position,
       yinYang: code[idx] === '1' ? '阳' : '阴',
       gan,
       zhi,
       ganzhi: `${gan}${zhi}`,
       wuxing,
-      liuqin: getLiuQin(gongWuxing, wuxing),
+      // 文王纳甲六爻排盘中，变爻六亲仍按本卦所属卦宫五行定六亲；不随变卦卦宫重定。
+      liuqin: getLiuQin(originalGongWuxing, wuxing),
+      role: position === changedShiYing.shi ? '世' : position === changedShiYing.ying ? '应' : '',
     }
   })
 }
@@ -270,7 +276,7 @@ function buildYaoRow(
 export function buildPlateViewModel(input: PlateViewModelInput): PlateViewModel {
   const paipan = buildPaipan({ numbers: input.numbers })
   const timeContext = buildTimeContext({ castTime: input.castTime })
-  const changedRows = buildChangedRows(paipan.changed.code)
+  const changedRows = buildChangedRows(paipan.changed.code, paipan.original.palace)
   const rows = paipan.original.yaos.map((yao, idx) => buildYaoRow(yao, changedRows[idx]!, timeContext))
 
   return {
